@@ -42,6 +42,14 @@ function ArtistHome() {
                 >
                     <h3>{album.title}</h3>
                     <p>{album.Artist?.username}</p>
+                    <button
+            onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/create-music/${album._id}`);
+            }}
+        >
+            Upload Song
+        </button>
                 </div>
             ))}
 </div>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { use } from "react";
+
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ function AlbumDetails(){
     const{albumId}= useParams();
     const navigate= useNavigate();
 
-    const [album, setAlbum]= useState();
+    const [album, setAlbum]= useState(null);
     const [currentSong, setCurrentSong] = useState(null);
     useEffect(()=>{
         fetchAlbum();
@@ -18,12 +18,12 @@ function AlbumDetails(){
     const fetchAlbum= async()=>{
         try{
            const res = await axios.get(
-                `http://localhost:3000/api/music/album/${albumId}`,
+                `http://localhost:3000/api/music/albums/${albumId}`,
                 {
                     withCredentials: true
                 }
            );
-        setAlbum(res.data.album);
+        setAlbum(res.data.albums);
         }catch(err){
             console.log(err);
         }
@@ -36,7 +36,7 @@ function AlbumDetails(){
         <h2>songs</h2>
        <div>
         {
-            album.musics.map((song)=>(
+            album?.musics?.map((song)=>(
                 <div key={song._id}>
                     <h3
                     onClick={() => setCurrentSong(song)}
@@ -62,7 +62,7 @@ function AlbumDetails(){
         </div>
     )
 }
-       <button onClick={()=>navigate(`/create-music/${album._id}`)}>Upload songs</button>
+      
         </>
     )
 }

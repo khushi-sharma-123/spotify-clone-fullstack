@@ -1,9 +1,10 @@
 const musicModel = require("../models/music.model");
 const albumMusic= require("../models/album.models");
+const albumModel= require("../models/album.models")
 const { uploadfile } = require("../services/storage.service");
 
 const jwt = require("jsonwebtoken");
-const albumModel = require("../models/album.models");
+// const albumModel = require("../models/album.models");
 
 
 async function CreateMusic(req, res) {
@@ -90,7 +91,10 @@ async function getAllMusics(req, res){
 }
 
 async function getAllAlbums(req, res ){
-    const albums= await musicModel.find().select("title Artist").populate("Artist","username email")
+    // const albums= await musicModel.find().select("title Artist").populate("Artist","username email")
+    
+    const albums= await albumModel.find().populate("Artist","username email")
+    
 
      return res.status(200).json({
             massage:"albums fetched successfully",
@@ -126,12 +130,14 @@ async function  getAllAlbumsIds(req,res){
     console.log(req.params.albumIds);
     const allAlbums = await albumModel.find();
 console.log(allAlbums);
-    const albums= await albumModel.findById(albumIds).populate("Artist", "username email");
+    const albums= await albumModel.findById(albumIds).populate("musics").populate("Artist", "username email");
     console.log(albums)
+    console.log(albums.musics);
     return res.status(200).json({
         massage:"album fetched successfully",
        
         albums:albums
+      
     })
 }
 

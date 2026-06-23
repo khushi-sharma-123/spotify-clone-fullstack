@@ -22,7 +22,7 @@ router.get("/", authmiddleware.authUser,musicController.getAllMusics);
 
 router.get("/albums", authmiddleware.authUser, musicController.getAllAlbums);
 
-router.get("/albums/:albumIds", authmiddleware.authUser, musicController.getAllAlbumsIds);
+router.get("/albums/:albumIds", authmiddleware.auth, musicController.getAllAlbumsIds);
 
 router.get("/my-albums", authmiddleware.authArtist,musicController.getMyAlbum)
 router.get("/album/:albumId" , authmiddleware.authArtist,musicController.getAlbumbyId)

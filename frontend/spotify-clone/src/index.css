@@ -1,73 +1,211 @@
+/* ===== Global =====*/
+
+/* #{
+    box-sizing:border-box;
+} */
 
 body{
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: rgba(66, 222, 14, 0.484);
-    color: black;
+    margin:0;
+    font-family:system-ui, sans-serif;
+    background:#121212;
+    color:white;
 }
 
-.register-section,.login-section{
-    width: 350px;
-    margin: 100px auto;
-    padding: 30px;
-    background-color: rgb(145, 203, 111);
-    border-radius: 12px;
+/* ===== Navbar ===== */
+
+nav{
+    height:70px;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    border-bottom:1px solid #222;
+}
+
+nav h2{
+    margin:0;
+    color:#1DB954;
+}
+
+/* ===== Layout ===== */
+
+.app-layout{
+    display:flex;
+    min-height:calc(100vh - 70px);
+}
+
+/* ===== Sidebar ===== */
+
+.sidebar{
+    width:100px;
+    background:#000;
+    padding:25px 15px;
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+    border-right:1px solid #222;
+}
+
+.sidebar a{
+    text-decoration:none;
+    color:#b3b3b3;
+    padding:12px;
+    border-radius:8px;
+    transition:0.2s;
+}
+
+.sidebar a:hover{
+    background:#181818;
+    color:white;
+}
+
+/* ===== Main Content ===== */
+
+.main-content{
+    flex:1;
+    padding:30px;
+      width:100%;
+}
+
+/* .page-container{
+    max-width:900px;
+} */
+
+.page-container h1{
+    margin-top:0;
+}
+
+/* ===== Forms ===== */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input,
+select{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+button{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#1DB954;
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+/* ===== Album Grid ===== */
+
+.album-container{
+    margin-top:20px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
+}
+
+/* ===== Album Card ===== */
+
+.album-card{
+    background:#181818;
+    border-radius:12px;
+    padding:18px;
+    transition:0.2s;
+}
+
+.album-card:hover{
+    background:#242424;
+    transform:translateY(-3px);
+}
+
+.album-card h3{
+    margin:0 0 10px;
+}
+
+.album-card p{
+    color:#b3b3b3;
+    margin-bottom:15px;
+}
+
+/* ===== Login/Register ===== */
+
+.register-section,
+.login-section{
+    width:380px;
+    margin:100px auto;
+    background:#181818;
+    padding:30px;
+    border-radius:12px;
 }
 
 .register-section h1,
 .login-section h1{
-    text-align: center;
-} 
-form{
-    display: flex;
-    flex-direction: column;
-gap: 12px;
-
-} 
-
-input,
-select{
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
+    text-align:center;
 }
 
-button{
-    padding: 12px;
-    background: #1db954;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+/* ===== Music Player ===== */
+
+.music-player{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+
+    height:80px;
+    background:#181818;
+
+    border-top:1px solid #222;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 25px;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px, 40px;
-    background: #000;
+.album-details{
+    width:100%;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+.album-details h1{
+    font-size:48px;
+    margin-bottom:10px;
 }
 
-.album-card{
-    background:#257b16;
-    padding: 20px  ;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
+.song-list{
+    margin-top:25px;
 }
 
-.album-card:hover{
-    transform: translateY(-5px);
+.song-item{
+    background:#181818;
+    padding:16px 20px;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:12px;
+    cursor:pointer;
+
+    transition:0.2s;
 }
 
-.album-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
-    gap: 20px;
+.song-item:hover{
+    background:#282828;
 }

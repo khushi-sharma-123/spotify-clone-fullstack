@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Layout from "../components/Layout";
 
 function UserHome() {
     const [albums, setAlbums] = useState([]);
@@ -26,8 +27,10 @@ function UserHome() {
     }
     return (
         <>
+        <Layout>
+        <div className="page-container">
             <h1>Welcome User</h1>
-            <div>
+            <div className="album-container">
                 {albums.map((albums)=>(
                 <div
                     key={albums._id}
@@ -43,8 +46,8 @@ function UserHome() {
                 </div>
         ))}
             </div>
-
-
+</div>
+</Layout>
         </>
     )
 

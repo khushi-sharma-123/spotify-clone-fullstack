@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CreatAlbum from "./CreateAlbum";
+import Layout from "../components/Layout";
+
 
 function ArtistHome() {
     const navigate = useNavigate();
@@ -21,6 +23,9 @@ function ArtistHome() {
         }
         catch (err) {
             console.log("Error Fetching albums:", err)
+           
+   
+
         }
 
     }
@@ -30,6 +35,8 @@ function ArtistHome() {
     }, []);
     return (
         <>
+        <Layout>
+        <div className="page-container">
             <h1>Artist Dashboard</h1>
             <CreatAlbum onAlbumCreated={fetchAlbum} />
             <h2>My Albums</h2>
@@ -53,7 +60,8 @@ function ArtistHome() {
                 </div>
             ))}
 </div>
-            
+           </div> 
+           </Layout>
         </>
     )
 }
